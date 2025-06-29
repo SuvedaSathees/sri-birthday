@@ -1,0 +1,1 @@
+Put your images (e.g. srimun.jpg, memory1.jpg) in this folder.

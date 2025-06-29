@@ -1,0 +1,297 @@
+.home-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(132deg, 
+    rgba(255, 0, 110, 0.1) 0%, 
+    rgba(55, 178, 255, 0.1) 50%,
+    rgba(162, 0, 255, 0.1) 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.home-wrapper::before,
+.home-wrapper::after {
+  content: '';
+  position: absolute;
+  width: 1000px;
+  height: 1000px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+  animation: float-bubble 20s infinite linear;
+  opacity: 0.1;
+}
+
+.home-wrapper::before {
+  top: -400px;
+  left: -200px;
+}
+
+.home-wrapper::after {
+  bottom: -400px;
+  right: -200px;
+  background: linear-gradient(45deg, #4facfe, #00f2fe);
+  animation-duration: 25s;
+  animation-delay: -10s;
+}
+
+@keyframes float-bubble {
+  0% {
+    transform: rotate(0deg) translate(50px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translate(50px) rotate(-360deg);
+  }
+}
+
+.home-content {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  max-width: 1000px;
+  width: 100%;
+  padding: 30px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 1s ease-out;
+}
+
+.text-section {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px;
+}
+
+.heading {
+  font-size: 2.5rem;
+  color: #e91e63;
+  margin-bottom: 20px;
+  font-family: 'Comic Sans MS', cursive;
+  animation: softPulse 3s infinite ease-in-out;
+}
+
+.intro,
+.closing-text,
+.quote {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  font-family: 'Quicksand', sans-serif;
+  color: #444;
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: gentleReveal 1s forwards ease-out;
+}
+
+.intro { animation-delay: 0.3s; }
+.closing-text { animation-delay: 0.6s; }
+
+@keyframes gentleReveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quote-box {
+  background: #fff3f7;
+  border-left: 5px solid #ff80ab;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.quote-box::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shine 6s infinite linear;
+  opacity: 0.5;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.animation-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  min-width: 250px;
+}
+
+.cartoon-img {
+  width: 150px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.cartoon-img:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+.confetti-btn {
+  background-color: #ff80ab;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  background: linear-gradient(45deg, #ff80ab, #ff4081);
+  background-size: 200% 200%;
+  animation: gradientMove 3s ease infinite;
+}
+
+.confetti-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 64, 129, 0.3);
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.floating-balloon {
+  position: absolute;
+  bottom: -50px;
+  font-size: 2rem;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Typewriter effect */
+.typewriter {
+  overflow: hidden;
+  border-right: 0.15em solid #ff80ab;
+  white-space: nowrap;
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+  font-size: 2.5rem;
+  font-family: 'Comic Sans MS', cursive;
+  color: #e91e63;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #ff80ab; }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-content:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+@keyframes softPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.cake-emoji {
+  display: inline-block;
+  animation: gentleFloat 3s infinite ease-in-out;
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.name-glow {
+  animation: softGlow 2s infinite alternate;
+}
+
+@keyframes softGlow {
+  from {
+    text-shadow: 0 0 10px rgba(255, 64, 129, 0.2),
+                 0 0 20px rgba(255, 64, 129, 0.1);
+  }
+  to {
+    text-shadow: 0 0 15px rgba(255, 64, 129, 0.4),
+                 0 0 25px rgba(255, 64, 129, 0.2);
+  }
+}
+
+.confetti-btn {
+  transition: all 0.3s ease;
+  background: linear-gradient(45deg, #ff80ab, #ff4081);
+  background-size: 200% 200%;
+  animation: gradientMove 3s ease infinite;
+}
+
+.confetti-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 64, 129, 0.3);
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.cartoon-img {
+  transition: transform 0.3s ease;
+}
+
+.cartoon-img:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
